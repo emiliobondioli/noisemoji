@@ -39,7 +39,7 @@ function updateBuffer() {
       const noise = p5.map(p5.noise(x / NOISE_SCALE, y / NOISE_SCALE, t), 0, 1, 0, 1)
 
       let offset = 0;
-      if (USE_MOUSE && mouse.x > 0 && mouse.x < bb.width && mouse.y > 0 && mouse.y < bb.height) {
+      if (USE_MOUSE) {
         const d = p5.dist(coords.x, coords.y, mouse.x, mouse.y)
         offset = p5.map(d, 0, bb.width / 2, 0.5, 0, true)
       }
