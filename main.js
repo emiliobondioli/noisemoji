@@ -28,6 +28,7 @@ document.addEventListener('touchmove', e => updateMouse(e.touches[0]))
 window.addEventListener('resize', init)
 
 function updateMouse(e) {
+  if(!mousedown) return
   mouse = {
     x: e.clientX - bb.x,
     y: e.clientY - bb.y
