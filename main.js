@@ -4,7 +4,6 @@ import P5 from 'p5'
 import { rainbow, short } from './library.js'
 
 const p5 = new P5()
-
 const library = short.reverse()
 
 const W = 60
