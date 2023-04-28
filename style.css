@@ -1,6 +1,5 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -18,36 +17,16 @@
   box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-html {
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
+html, body {
   margin: 0;
-  width: 100%;
+  padding: 0;
   height: 100%;
   overflow: hidden;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 #app {
   width: 100%;
   height: 100%;
-  margin: 0 auto;
   padding: 0;
   overflow: hidden;
   font-size: .65em;
@@ -57,15 +36,4 @@ h1 {
   text-justify: inter-character;
   white-space: nowrap;
   letter-spacing: 0px;
-}
-
-#app div {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-  flex-wrap: nowrap;
 }
