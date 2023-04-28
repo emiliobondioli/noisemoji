@@ -13,7 +13,7 @@ let bb = container.getBoundingClientRect()
 let W, H
 let NOISE_SCALE = 60
 let USE_MOUSE = true
-let buffer = ''
+
 let t = 0
 let mouse = { x: 0, y: 0 }
 let mouseInc = 0;
@@ -28,7 +28,7 @@ document.addEventListener('touchmove', e => updateMouse(e.touches[0]))
 window.addEventListener('resize', init)
 
 function updateMouse(e) {
-  if(!mousedown) return
+  if (!mousedown) return
   mouse = {
     x: e.clientX - bb.x,
     y: e.clientY - bb.y
@@ -48,31 +48,29 @@ init()
 function updateBuffer() {
   t += 0.003;
   let str = ''
-  if(mousedown) mouseInc += 0.01
+  if (mousedown) mouseInc += 0.01
   else mouseInc -= 0.01
   mouseInc = p5.constrain(mouseInc, 0, 1)
   for (let y = 0; y < H; y++) {
-    // str += '<div>'
     for (let x = 0; x < W; x++) {
       const coords = {
         x: map(x, 0, W, 0, bb.width),
         y: map(y, 0, H, 0, bb.height)
       }
-      const noise = p5.map(p5.noise(x / NOISE_SCALE, y / NOISE_SCALE, t), 0, 1, 0, 1)
+      const noise = p5.noise(x / NOISE_SCALE, y / NOISE_SCALE, t)
 
       let offset = 0;
       if (USE_MOUSE) {
         const d = p5.dist(coords.x, coords.y, mouse.x, mouse.y)
         offset = p5.map(d, 0, Math.max(bb.width, bb.height) / 4, 0.5, 0, true) * mouseInc
       }
-      const char = library[Math.floor((p5.constrain(noise + offset, 0, 1)) * (library.length - 1))]
+      const coeff = p5.constrain(noise + offset, 0, 1)
+      const char = library[Math.floor((coeff) * (library.length - 1))]
       str += char
-      // str += `<span>${char}</span>`
     }
     str += '<br/>'
   }
-  buffer = str
-  sample.innerHTML = buffer
+  sample.innerHTML = str
   requestAnimationFrame(updateBuffer)
 }
 
