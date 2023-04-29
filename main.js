@@ -91,7 +91,7 @@ function update() {
       let offset = 0;
       if (config.mouse) {
         const d = p5.dist(coords.x, coords.y, mouse.x, mouse.y)
-        offset = p5.map(d, 0, Math.max(bb.width, bb.height) / (10 - config.radius), 0.5, 0, true) * mouseInc
+        offset = p5.map(d, 0, Math.max(bb.width, bb.height) / (10 - config.radius), 1, 0, true) * mouseInc
       }
       
       const coeff = p5.constrain(noise + offset, 0, 1);
