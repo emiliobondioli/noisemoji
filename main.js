@@ -86,6 +86,7 @@ function update() {
         y: p5.map(y, 0, H, 0, bb.height)
       }
       const noise = p5.noise(x / config.scale, y / config.scale, t);
+      if(x === 0 && y === 0) console.log(noise)
 
       let offset = 0;
       if (config.mouse) {
