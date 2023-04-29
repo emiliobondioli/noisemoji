@@ -79,13 +79,13 @@ body {
   }
   .tools {
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: space-between;
     .slider {
       order: 1;
       margin: 0 0.15rem;
       margin-bottom: 0.25rem;
     }
-    button {
+    .buttons {
       order: 2;
     }
   }
