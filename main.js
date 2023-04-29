@@ -9,6 +9,8 @@ const sliders = Array.from(document.querySelectorAll('.slider input'))
 const sample = container.querySelector('#sample')
 const sampleBB = sample.getBoundingClientRect()
 let bb = container.getBoundingClientRect()
+
+// state
 let W, H
 let t = 0
 let mouse = { x: 0, y: 0 }
@@ -19,8 +21,8 @@ let currentMap = maps.base
 const config = {
   scale: 60,
   speed: 0.003,
-  mouse: true,
   radius: 5,
+  mouse: true,
 }
 
 function setListeners() {
@@ -30,18 +32,18 @@ function setListeners() {
   document.addEventListener('touchend', e => mousedown = false)
   document.addEventListener('mousemove', e => updateMouse(e))
   document.addEventListener('touchmove', e => updateMouse(e.touches[0]))
-  window.addEventListener('resize', init)
-
+  
   mapButtons.forEach(el => {
     el.addEventListener('click', () => setMap(el.dataset.map))
   })
-
+  
   sliders.forEach(el => {
     el.value = config[el.dataset.param]
     el.addEventListener('input', () => setConfig(el.dataset.param, el.value))
   })
+
+  window.addEventListener('resize', init)
 }
-setListeners()
 
 function setConfig(key, value) {
   config[key] = parseFloat(value)
@@ -67,7 +69,6 @@ function init() {
   W = Math.ceil(bb.width / Math.floor(sampleBB.width / 1.05))
   H = Math.ceil(bb.height / Math.floor(sampleBB.height / 1.25))
 }
-init()
 
 function update() {
   t += config.speed;
@@ -101,4 +102,7 @@ function update() {
   requestAnimationFrame(update)
 }
 
+// run
+setListeners()
+init()
 requestAnimationFrame(update)

@@ -618,7 +618,8 @@ export const rainbow = [
   "🎱"
 ]
 
-export const base = ["⛔",
+export const base = [
+  "⛔",
   "🚫",
   "🔞",
   "📵",
